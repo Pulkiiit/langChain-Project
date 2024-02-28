@@ -6,7 +6,7 @@ const path = require("path");
 const ngrok = require("@ngrok/ngrok");
 require("dotenv").config();
 const { Embeddings } = require("./embeddings");
-const { question } = require("./interface");
+const { ask } = require("./interface");
 
 const app = express();
 const port = 3000;
@@ -65,7 +65,7 @@ const handleIncomingMessage = async req => {
     return message;
   } else {
     const question = Body;
-    message = await question(question);
+    message = await ask(question);
     return message;
   }
 };

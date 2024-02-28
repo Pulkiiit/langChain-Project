@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const model = new OpenAI({ modelName: "gpt-3.5-turbo" });
 
-const question = async question => {
+const ask = async question => {
   question = "What technologies are used in the project mentioned?";
   try {
     const vectorStore = await FaissStore.load(
@@ -27,4 +27,4 @@ const question = async question => {
   }
 };
 
-module.exports = { question };
+module.exports = { ask };
