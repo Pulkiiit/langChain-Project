@@ -7,7 +7,6 @@ require("dotenv").config();
 const model = new OpenAI({ modelName: "gpt-3.5-turbo" });
 
 const ask = async question => {
-  question = "What technologies are used in the project mentioned?";
   try {
     const vectorStore = await FaissStore.load(
       "embeddings",

@@ -86,8 +86,9 @@ app.post("/incomingMessage", async (req, res) => {
     message =
       "Please wait, it can take several seconds to process this document";
     sendMessage(message, To, From);
-
+    console.log(req.body["MediaUrl0"]);
     const wasDocumentSaved = await saveDocument(req.body["MediaUrl0"]);
+    console.log(wasDocumentSaved);
     if (!wasDocumentSaved) {
       message = "Failed to save document";
       sendMessage(message, To, From);
@@ -95,6 +96,7 @@ app.post("/incomingMessage", async (req, res) => {
     }
 
     const wasEmbeddingsGenerated = await Embeddings();
+    console.log(wasEmbeddingsGenerated);
     if (!wasEmbeddingsGenerated) {
       message = "Document embeddings were not generated";
       sendMessage(message, To, From);
