@@ -9,12 +9,11 @@ const { Embeddings } = require("./embeddings");
 const { ask } = require("./interface");
 
 const app = express();
-const port = 3000;
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.listen(port, () => {
-  console.log(`Express server running on port ${port}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Express server running`);
 });
 
 // ngrok
