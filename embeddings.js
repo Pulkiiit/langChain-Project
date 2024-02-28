@@ -1,5 +1,5 @@
-// const { PDFLoader } = require("langchain/document_loaders/fs/pdf");
-const pdf = require("pdf-parse");
+const { PDFLoader } = require("langchain/document_loaders/fs/pdf");
+// const pdf = require("pdf-parse");
 const { OpenAIEmbeddings } = require("langchain/embeddings/openai");
 const { FaissStore } = require("@langchain/community/vectorstores/faiss");
 const path = require("path");
