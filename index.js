@@ -13,12 +13,12 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log(`Express server running`);
+  console.log(`Express server running on ${process.env.PORT || 3000}`);
 });
 
-// ngrok
-//   .connect({ addr: port, authtoken_from_env: true, subdomain: subdomain })
-//   .then(listener => console.log(`Ingress established at: ${listener.url()}`));
+ngrok
+  .connect({ addr: port, authtoken_from_env: true, subdomain: subdomain })
+  .then(listener => console.log(`Ingress established at: ${listener.url()}`));
 
 const twilioClient = twilio(
   process.env.TWILIO_ACCOUNT_SID,
