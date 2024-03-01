@@ -16,9 +16,9 @@ app.listen(port, () => {
   console.log(`Express server running on ${port}`);
 });
 
-// ngrok
-//   .connect({ addr: port, authtoken_from_env: true })
-//   .then(listener => console.log(`Ingress established at: ${listener.url()}`));
+ngrok
+  .connect({ addr: port, authtoken_from_env: true })
+  .then(listener => console.log(`Ingress established at: ${listener.url()}`));
 
 const twilioClient = twilio(
   process.env.TWILIO_ACCOUNT_SID,
@@ -57,13 +57,12 @@ const handleIncomingMessage = async req => {
   const { Body } = req.body;
   let message = "";
 
-  if (Body.toLowerCase().includes("/start")) {
+  if (Body.toLowerCase().includes("hello") && Body.length === 5) {
     message =
-      "Please send me the PDF document that you would like to chat with";
+      "Hello! I'm DocuBot 🤖, your friendly PDF assistant.\nPlease send a PDF file to start asking questions about its content.";
     return message;
   } else {
-    const question = Body;
-    message = await ask(question);
+    message = await ask(Body);
     return message;
   }
 };
@@ -84,7 +83,7 @@ app.post("/incomingMessage", async (req, res) => {
     message =
       "Please wait, it can take several seconds to process this document";
     sendMessage(message, To, From);
-    console.log(req.body["MediaUrl0"]);
+    // console.log(req.body["MediaUrl0"]);
     const wasDocumentSaved = await saveDocument(req.body["MediaUrl0"]);
     console.log(wasDocumentSaved);
     if (!wasDocumentSaved) {
