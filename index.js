@@ -32,7 +32,7 @@ const sendMessage = (message, from, to) => {
 };
 
 const saveDocument = async mediaURL => {
-  //use different way to save pdf
+  //pdf and co ??
   try {
     const fetch = (await import("node-fetch")).default;
     const filepath = path.join(__dirname, "documents", "document.pdf");
@@ -95,13 +95,12 @@ app.post("/incomingMessage", async (req, res) => {
     const wasEmbeddingsGenerated = await Embeddings();
     console.log(wasEmbeddingsGenerated);
     if (!wasEmbeddingsGenerated) {
-      message = "Document embeddings were not generated";
+      message = "Sorry could not process the document. Please try again later.";
       sendMessage(message, To, From);
       return res.status(200);
     }
 
-    message =
-      "Document embeddings were generated and stored, ask anything about the document";
+    message = "Ready! Ask anything about the document";
     sendMessage(message, To, From);
     return res.status(200);
   }
