@@ -32,7 +32,7 @@ const sendMessage = (message, from, to) => {
 };
 
 const saveDocument = async mediaURL => {
-  //pdf and co ??
+  //pdf and doc as well maybe ??
   try {
     const fetch = (await import("node-fetch")).default;
     const filepath = path.join(__dirname, "documents", "document.pdf");
