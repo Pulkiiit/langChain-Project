@@ -25,6 +25,8 @@ const Embeddings = async () => {
 
     // embeddings
 
+    // check if already exists then update else create (to do)
+
     const vectorStore = await FaissStore.fromDocuments(
       chunks,
       new OpenAIEmbeddings()

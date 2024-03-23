@@ -24,6 +24,8 @@ const ask = async question => {
       template: template,
     });
 
+    // save answer to store (to do)
+
     console.log(result);
     return result.text;
   } catch (error) {

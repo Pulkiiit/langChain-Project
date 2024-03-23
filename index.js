@@ -60,6 +60,7 @@ const handleIncomingMessage = async req => {
   if (Body.toLowerCase().includes("hello") && Body.length === 5) {
     message =
       "Hello! I'm DocuBot 🤖, your friendly PDF assistant.\nPlease send a PDF file to start asking questions about its content.";
+    // delete embeddings (old ones) (to do)
     return message;
   } else {
     message = await ask(Body);
