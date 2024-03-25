@@ -1,4 +1,5 @@
 const { PDFLoader } = require("langchain/document_loaders/fs/pdf");
+const { DirectoryLoader } = require("langchain/document_loaders/fs/directory");
 const { OpenAIEmbeddings } = require("langchain/embeddings/openai");
 const { CharacterTextSplitter } = requiore("langchain/text_splitter");
 const { FaissStore } = require("@langchain/community/vectorstores/faiss");
@@ -7,11 +8,18 @@ require("dotenv").config();
 
 const Embeddings = async () => {
   // loading the document
+  // handle multiple documents
 
   try {
-    const loader = new PDFLoader(
-      path.join(__dirname, "documents", "document.pdf")
-    );
+    // const loader = new PDFLoader(
+    //   path.join(__dirname, "documents", "document.pdf")
+    // );
+    // const docs = await loader.load();
+
+    const loader = new DirectoryLoader(path.join(__dirname, "documents"), {
+      ".pdf": path => new PDFLoader(path),
+    });
+
     const docs = await loader.load();
 
     //text splitting
@@ -24,8 +32,6 @@ const Embeddings = async () => {
     const chunks = await splitter.splitText(docs);
 
     // embeddings
-
-    // check if already exists then update else create (to do)
 
     const vectorStore = await FaissStore.fromDocuments(
       chunks,
