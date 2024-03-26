@@ -1,6 +1,6 @@
-const { OpenAI } = require("@langchain/openai");
+const { OpenAI, OpenAIEmbeddings } = require("@langchain/openai");
 const { FaissStore } = require("@langchain/community/vectorstores/faiss");
-const { OpenAIEmbeddings } = require("langchain/embeddings/openai");
+// const { OpenAIEmbeddings } = require("langchain/embeddings/openai");
 const { RetrievalQAChain } = require("langchain/chains");
 require("dotenv").config();
 
