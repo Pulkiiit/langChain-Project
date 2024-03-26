@@ -116,7 +116,7 @@ const handleIncomingMessage = async req => {
   const { Body } = req.body;
   let message = "";
 
-  if (Body.toLowerCase().includes("hello") && Body.length === 5) {
+  if (Body.toLowerCase().includes("/start")) {
     message =
       "Hello! I'm DocuBot 🤖, your friendly PDF assistant.\nPlease send a PDF file to start asking questions about its content.";
 
