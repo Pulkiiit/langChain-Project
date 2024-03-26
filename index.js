@@ -17,9 +17,9 @@ app.listen(port, () => {
   console.log(`Express server running on ${port}`);
 });
 
-ngrok
-  .connect({ addr: port, authtoken_from_env: true })
-  .then(listener => console.log(`Ingress established at: ${listener.url()}`));
+// ngrok
+//   .connect({ addr: port, authtoken_from_env: true })
+//   .then(listener => console.log(`Ingress established at: ${listener.url()}`));
 
 const twilioClient = twilio(
   process.env.TWILIO_ACCOUNT_SID,

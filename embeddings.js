@@ -1,7 +1,7 @@
 const { PDFLoader } = require("langchain/document_loaders/fs/pdf");
 const { DirectoryLoader } = require("langchain/document_loaders/fs/directory");
 const { OpenAIEmbeddings } = require("langchain/embeddings/openai");
-const { CharacterTextSplitter } = requiore("langchain/text_splitter");
+const { CharacterTextSplitter } = require("langchain/text_splitter");
 const { FaissStore } = require("@langchain/community/vectorstores/faiss");
 const path = require("path");
 require("dotenv").config();
